@@ -112,7 +112,7 @@ class CharactersActivity : CharactersView, AppCompatActivity() {
     override fun showUsers(list: CharactersResponse) {
         stopLoading()
         if ( offset == 20){
-            for (i in 0..5) {
+            for (i in 0..6) {
                 if (!list.results[i].thumbnail.path.contains("image_not_available"))
                     sampleImages.add(list.results[i].thumbnail.path + "." + list.results[i].thumbnail.extension)
             }
@@ -123,7 +123,7 @@ class CharactersActivity : CharactersView, AppCompatActivity() {
             }
             carouselView.pageCount = sampleImages.size
         }
-        mAdapter.updateItems(list.results.subList(6, list.results.size))
+        mAdapter.updateItems(list.results.subList(7, list.results.size))
     }
 
     override fun showErrorMessage(message: String) {

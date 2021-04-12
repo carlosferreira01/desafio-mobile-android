@@ -45,12 +45,8 @@ class CharactersInteractorImpl(
                     object : BaseCallback<CharactersResponse> {
                         override fun onSuccess(response: CharactersResponse) {
                             mCharactersPresenter.showCharacters(response)
-                            if (offset == 20)
-                                mCharactersDataSource.deleteCharacters()
-                            else {
-                                val local = mCharactersDataSource.getCharactersLocal()
-                                mCharactersDataSource.saveCharacters(response.copy(results = response.results + local.results))
-                            }
+                            mCharactersDataSource.deleteCharacters()
+                            mCharactersDataSource.saveCharacters(response)
                         }
 
                         override fun onError(error: String) {
